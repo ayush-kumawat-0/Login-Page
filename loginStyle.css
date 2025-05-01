@@ -73,7 +73,7 @@ input[type="password"]:focus {
     top: 3%;
     font-size: 20px;
     color: white;
-
+    cursor: pointer;
 }
 
 button {

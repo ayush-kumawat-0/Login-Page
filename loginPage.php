@@ -56,20 +56,22 @@ if(isset($_SESSION['error'])){
     </section>
 </body>
 <script>
-    // function myFunction() {
+function passFun() {
     var x = document.getElementById("myInput");
     var img = document.querySelector(".passw");
     img.addEventListener("click", function() {
         if (x.type === "password") {
             x.type = "text";
-            img.classList.remove("ri-eye-line");
-            img.classList.add("ri-eye-off-line");
-        } else {
-            x.type = "password";
             img.classList.remove("ri-eye-off-line");
             img.classList.add("ri-eye-line");
+        } else {
+            x.type = "password";
+            img.classList.remove("ri-eye-line");
+            img.classList.add("ri-eye-off-line");
         }
     });
+    }
+    passFun();
 </script>
 
 </html>

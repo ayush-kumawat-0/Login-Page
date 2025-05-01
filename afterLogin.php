@@ -17,29 +17,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         ['name' => "Ankit Soni", 'age' => 25, 'username' => "ankit_123", 'password' => "ankit@123"],
     ];
 
-    $inputUsername = $_POST['username'] ?? '';
-    $inputPassword = $_POST['password'] ?? '';
+    $_SESSION['details'] = $details;
 
-    foreach ($details as $detail) {
-        if ($detail['username'] === $inputUsername && $detail['password'] === $inputPassword) {
-            $_SESSION['name'] = $detail['name'];
-            $_SESSION['age'] = $detail['age'];
-            $_SESSION['username'] = $detail['username'];
-            $_SESSION['password'] = $detail['password'];
+    $inputUsername = $_POST['username'];
+    $inputPassword = $_POST['password'];
+
+    foreach ($details as $user) {
+        if ($user['username'] === $inputUsername && $user['password'] === $inputPassword) {
+            $_SESSION['name'] = $user['name'];
+            $_SESSION['age'] = $user['age'];
+            $_SESSION['username'] = $user['username'];
+            $_SESSION['password'] = $user['password'];
             $found = true;
             break;
         }
     }
 
     if ($found) {
-        showWelcomePage(); 
+        showWelcomePage();
         exit();
     } else {
         $_SESSION['error'] = "Invalid username or password!";
         header("Location: loginPage.php");
         exit();
     }
-
 } else {
     header("Location: loginPage.php");
     exit();
@@ -161,7 +162,6 @@ function showWelcomePage()
 
 
             <div class="btn-container">
-                <!-- <div class="modify"> -->
                 <a href="edit.php"><button class="page2btn">Edit</button></a>
                 <a href="fullDetail.php"><button class="page2btn">Full Details</button></a>
                 <a href="logout.php"><button class="page2btn">Logout</button></a>
